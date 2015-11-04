@@ -1,4 +1,4 @@
-int count = 1000;
+int count = 500;
 //declare variables
 float [] x = new float[count];
 float [] y = new float[count];
@@ -19,29 +19,31 @@ void setup() {
   size(500, 500);
 
 
-  //declare local integer i
-  int i = 0;
+  //use a for loop to set array
+  
 
-  while (i<count) {
+  for (int i = 0; i<count; i++) {
 
     //initialize variables
     x[i] = width/2;
 
     y[i] = height/2;
-    diam[i] = 20;
-    velX[i] = random(-5, 5);
-    velY[i] = random(-5, 5);
+    diam[i] = 10;
+    velX[i] = random(-100, 100);
+    velY[i] = random(-150, 150);
 
-    i++;
+
   }
 }
 
 void draw() {
-background(0);
-  int i= 0;
-  int count = 1000;
-  while (i<count) {
-    //draw background to cover previous frame
+//draw background to cover previous frame
+    
+  background(0);
+ 
+// setup another for loop to control the ball to bounce of the walls
+
+  for ( int i= 0; i<count; i++) {
     
 
     //draw ball
@@ -63,18 +65,18 @@ fill(random(255),0,0);
   fill(255);
 
 }
-    if (y[i] + diam[i]/2 >= height) {
-      velY[i] = -abs(velY[i]);
+    if (y[i] + diam[i]/2 >= height) {    
+      velY[i] = -abs(velY[i]);               ////if the ball hits the top wall, assign y velocity the negative version of itself
    
   fill(0,random(255),0);  
 
 } else if (y[i] - diam[i]/2 <= 0) {
-      velY[i] = abs(velY[i]);
+      velY[i] = abs(velY[i]);    ////if the ball hits the bottom wall, assign y velocity the negative version of itself
     
   fill(255);
 
 }
 
-    i++;
+   
   }
 }
